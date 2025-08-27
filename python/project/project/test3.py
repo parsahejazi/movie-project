@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import math
 os.system('cls')
 
 def movielist ():
@@ -42,7 +43,11 @@ def sim(target1,target2):
     ranked2 =[]
     sim=np.array
     counter=0
-    # print(readR)
+    multi=0
+    x=0
+    ratings1=[]
+    ratings2=[]
+    # print(readR)1
     for item in readR:
         
         part = item.strip().split('\t')
@@ -56,15 +61,20 @@ def sim(target1,target2):
     f_matrix=np.array(ranked)
     s_matrix=np.array(ranked2)
     frow=f_matrix[:,0]
+    frrow=f_matrix[:,1]
     
     for i in range(s_matrix.shape[0]):
         srow=s_matrix[i][0]
+        srrow=s_matrix[i][1]
+        multi=0
         if srow in frow:
             counter+=1
+            multi=srrow*frrow
+            x+=multi
             print(srow)
             
     return counter
-            
+       #dsfdsfdsfdsfdsf     
     
             
         

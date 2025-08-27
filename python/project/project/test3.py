@@ -71,9 +71,20 @@ def sim(target1,target2):
             counter+=1
             multi=srrow*frrow
             x+=multi
-            print(srow)
+            ratings1.append(srrow)
+            ratings2.append(frrow)
             
-    return counter
+            print(srow)
+    sqrr = [x**2 for x in ratings1]
+    sqrr2 = [x**2 for x in ratings2]
+    
+    t1= sum(sqrr)
+    t2= sum(sqrr2)
+    print(x)
+    
+    res = x/(np.sqrt(t1)*np.sqrt(t2))
+            
+    return counter,res
        #dsfdsfdsfdsfdsf     
     
             
@@ -104,9 +115,10 @@ while True :
         target1 =str(input("first :"))
         target2 =str(input("second :"))
 
-        counter = sim(target1,target2)
+        counter,res = sim(target1,target2)
         print("sim : ")
         print(counter)
+        print(res[0])
         
         
 

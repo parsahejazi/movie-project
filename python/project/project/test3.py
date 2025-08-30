@@ -228,7 +228,7 @@ def recomendatin(target):
         s_matrix=np.array(ranked2)
         g=y[i]
         kk=y[i+8]
-        print(j)
+        # print(j)
         # frow=f_matrix[:,0]
         # frrow=f_matrix[:,1]
         # print(f_matrix)
@@ -237,7 +237,7 @@ def recomendatin(target):
         for i in range(s_matrix.shape[0]):
             srow = s_matrix[i][0]
             srrow = s_matrix[i][1]
-            multi = 0
+            
             found = False
             for j in range(f_matrix.shape[0]):
                 if srow == f_matrix[j][0]:
@@ -274,7 +274,21 @@ def recomendatin(target):
             fres.append((str(ress),ii))
             helper.append(ress)
         
-    print("rizzzzzzz",fres)            
+    fres.sort(key=lambda x: x[0], reverse=True) 
+    print("rizzzzzzz",fres)   
+    movie_file = open('movies.txt')
+    readM = movie_file.readlines()
+    
+    print("**********Recomandations********************************************************************")  
+    for i in range(3):
+        # print("recomendation : " ,rec[i][0])
+        for item in readM:
+            partt= item.strip().split('\t')
+            # print(part[0])
+            if partt[0]==str(fres[i][1]):
+                
+                print(" Film : ",partt[1],'\t',partt[2],'\n')
+             
 while True :
     
                     

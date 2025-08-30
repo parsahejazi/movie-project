@@ -2,6 +2,23 @@ import os
 import numpy as np
 import math
 os.system('cls')
+print("**************************************Welcom to Movie recommendation system (made by p.hsah)***************************************")
+print('\n')
+print('\n')
+print("0 : Back to Menu")
+print('\n')
+print("1 : Movie list")
+print('\n')
+print("2 : Ratings list")
+print('\n')
+print("3 : Similarity between tow users")
+print('\n')
+print("4 : Movie recommendation")
+print('\n')
+print("5 : Rate a Movie")
+print('\n')
+print("6 : Add a Movie")
+print('\n')
 
 def movielist ():
     
@@ -34,8 +51,7 @@ def comments ():
                     print('\n', end='')
                 else:
                     print(char, end='')
-                    
-                    
+                                     
 def sim(target1,target2):
     Rating_file = open('Ratings.txt')
     readR = Rating_file.readlines()
@@ -97,8 +113,7 @@ def sim(target1,target2):
             
     return res
        #dsfdsfdsfdsfdsf     
-    
-    
+      
 def finenibor(target):
     x=[]
     y=[]
@@ -194,8 +209,7 @@ def finenibor(target):
                 
     #             print(" Film : ",partt[1],'\t',partt[2],'\n')
     #this is my recamndatioin algorithem//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-            
+         
 def recomendatin(target):
     
     Rating_file = open('Ratings.txt')
@@ -263,8 +277,7 @@ def recomendatin(target):
         
             if s2>0:
                 res=p/s2
-            else:
-                print("broooo ERORRRR")
+            
             result.append((str(res),i))
     fres=[]
     helper=[]
@@ -275,7 +288,7 @@ def recomendatin(target):
             helper.append(ress)
         
     fres.sort(key=lambda x: x[0], reverse=True) 
-    print("rizzzzzzz",fres)   
+    # print("rizzzzzzz",fres)   
     movie_file = open('movies.txt')
     readM = movie_file.readlines()
     
@@ -288,11 +301,46 @@ def recomendatin(target):
             if partt[0]==str(fres[i][1]):
                 
                 print(" Film : ",partt[1],'\t',partt[2],'\n')
-             
+ 
+def addmovie(movieid,Moviename,year):
+    M_file = open('Movies.txt')
+    readR = M_file.readlines()
+    if year>2025:
+        print("Did you time travle ?")
+        return
+    
+        
+    
+    add=str(Moviename)+'\t'+str(year)
+    for add in readR:
+        print("ERROR it has been used")
+        return;
+    else:
+        rating.write(add)
+        
+ def addacoment(id,mid,rate):
+    Rating_file = open('Ratings.txt')
+    readR = Rating_file.readlines()
+    if rate>5:
+        print("ERROR betwwen 1 to 5")
+        return
+    if id<1 or id>100:
+        print("ERROR ")
+        return
+        
+    
+    add=str(id)+'\t'+str(mid)+'\t'+str(rate)
+    for add in readR:
+        print("ERROR it has been used")
+        return;
+    else:
+        rating.write(add)       
+
+
 while True :
     
                     
-    inpot =int(input("press what you want to do :"))
+    inpot =int(input("Enter your choice :"))
 
     if inpot==1 :
         os.system('cls')
@@ -307,9 +355,27 @@ while True :
     elif inpot==0:
         print('\n')
         os.system('cls')
+        print("**************************************Welcom to Movie recommendation system (made by p.hsah)***************************************")
+        print('\n')
+        print('\n')
+        print("0 : Back to Menu")
+        print('\n')
+        print("1 : Movie list")
+        print('\n')
+        print("2 : Ratings list")
+        print('\n')
+        print("3 : Similarity between tow users")
+        print('\n')
+        print("4 : Movie recommendation")
+        print('\n')
+        print("5 : Rate a Movie")
+        print('\n')
+        print("6 : Add a Movie")
+        print('\n')
         # inpot =int(input("press what you want to do :"))
     elif inpot==3:
         print('\n')
+        os.system('cls')
         target1 =str(input("first :"))
         target2 =str(input("second :"))
 
@@ -318,6 +384,7 @@ while True :
         print(res)
     elif inpot==4:
         print('\n')
+        os.system('cls')
         ta =str(input("first :"))
         finenibor(ta)
         recomendatin(ta)

@@ -99,78 +99,154 @@ def sim(target1,target2):
        #dsfdsfdsfdsfdsf     
     
     
-def recomandation(target):
+def finenibor(target):
     x=[]
+    y=[]
     for i in range(51 ):
         # print(i)
         # print(target)
-        y= sim(str(target),str(i))
+        z= sim(str(target),str(i))
         # print(y)
-        x.append((y,i))
+        x.append((z,i))
     x.sort(reverse=True)
     # print(x)
     # print("x : ",x[1])
     s,u=x[1]
+    s1,u1=x[2]
+    s2,u2=x[3]
+    s3,u3=x[4]
+    s4,u4=x[5]
+    s5,u5=x[6]
+    s6,u6=x[7]
+    s7,u7=x[8]
+    
+    y.append(u)
+    y.append(u1)
+    y.append(u2)
+    y.append(u3)
+    y.append(u4)
+    y.append(u5)
+    y.append(u6)
+    y.append(u7)
+    y.append(s)
+    y.append(s1)
+    y.append(s2)
+    y.append(s3)
+    y.append(s4)
+    y.append(s5)
+    y.append(s6)
+    y.append(s7)
+    return y;
+# this is my algorithem for recomedation/////////////////////////////////////////////////////////////////////////////////////
     # print("u",u)
+    
+    # Rating_file = open('Ratings.txt')
+    # readR = Rating_file.readlines()
+    # ranked =[]
+    # ranked2 =[]
+    # # sim=np.array
+    # counter=0
+    # multi=0
+    # x=0
+    # rec=[]
+    # # print(readR)1
+    # for item in readR:
+        
+    #     part = item.strip().split('\t')
+    #     # print(part[0])
+    #     if part[0]==target:
+    #         # print("okay")
+    #         ranked.append([int(part[1]),int(part[2])])
+    #     if part[0]==str(u):
+    #         # print("okay")
+    #         ranked2.append([int(part[1]),int(part[2])])
+    # f_matrix=np.array(ranked)
+    # s_matrix=np.array(ranked2)
+    # # frow=f_matrix[:,0]
+    # # frrow=f_matrix[:,1]
+    # # print(f_matrix)
+    # # print(s_matrix)
+    
+    # for i in range(s_matrix.shape[0]):
+    #     srow = s_matrix[i][0]
+    #     srrow = s_matrix[i][1]
+    #     multi = 0
+    #     found = False
+    #     for j in range(f_matrix.shape[0]):
+    #         if srow == f_matrix[j][0]:
+    #             found = True
+    #             break
+    #     if not found:
+    #         rec.append((srow, srrow))
+
+                
+    # rec.sort(key=lambda x: x[1], reverse=True) 
+    # # print("rec",rec)
+    # movie_file = open('movies.txt')
+    # readM = movie_file.readlines()
+    # for i in range(3):
+    #     # print("recomendation : " ,rec[i][0])
+    #     print("**********Recomandations********************************************************************")  
+    #     for item in readM:
+    #         partt= item.strip().split('\t')
+    #         # print(part[0])
+    #         if partt[0]==str(rec[i][0]):
+                
+    #             print(" Film : ",partt[1],'\t',partt[2],'\n')
+    #this is my recamndatioin algorithem//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+            
+def recomendatin(target):
     
     Rating_file = open('Ratings.txt')
     readR = Rating_file.readlines()
-    ranked =[]
-    ranked2 =[]
-    # sim=np.array
-    counter=0
-    multi=0
-    x=0
     rec=[]
-    # print(readR)1
-    for item in readR:
-        
-        part = item.strip().split('\t')
-        # print(part[0])
-        if part[0]==target:
-            # print("okay")
-            ranked.append([int(part[1]),int(part[2])])
-        if part[0]==str(u):
-            # print("okay")
-            ranked2.append([int(part[1]),int(part[2])])
-    f_matrix=np.array(ranked)
-    s_matrix=np.array(ranked2)
-    # frow=f_matrix[:,0]
-    # frrow=f_matrix[:,1]
-    # print(f_matrix)
-    # print(s_matrix)
-    
-    for i in range(s_matrix.shape[0]):
-        srow = s_matrix[i][0]
-        srrow = s_matrix[i][1]
-        multi = 0
-        found = False
-        for j in range(f_matrix.shape[0]):
-            if srow == f_matrix[j][0]:
-                found = True
-                break
-        if not found:
-            rec.append((srow, srrow))
+    y=finenibor(target)
+    for i in range(7):
+        g=0
 
-                
-    rec.sort(key=lambda x: x[1], reverse=True) 
-    # print("rec",rec)
-    movie_file = open('movies.txt')
-    readM = movie_file.readlines()
-    for i in range(3):
-        # print("recomendation : " ,rec[i][0])
-        print("**********Recomandations********************************************************************")  
-        for item in readM:
-            partt= item.strip().split('\t')
+        j=0
+        ranked =[]
+        ranked2 =[]
+        # sim=np.array
+        counter=0
+        multi=0
+        x=0
+        # print(readR)1
+        for item in readR:
+            
+            part = item.strip().split('\t')
             # print(part[0])
-            if partt[0]==str(rec[i][0]):
-                
-                print(" Film : ",partt[1],'\t',partt[2],'\n')
-    
-            
-            
-    
-
+            if part[0]==target:
+                # print("okay")
+                ranked.append([int(part[1]),int(part[2])])
+            if part[0]==str(y[i]):
+                # print("okay")
+                ranked2.append([int(part[1]),int(part[2])])
+        f_matrix=np.array(ranked)
+        s_matrix=np.array(ranked2)
+        g=y[i]
+        kk=y[i+8]
+        print(j)
+        # frow=f_matrix[:,0]
+        # frrow=f_matrix[:,1]
+        # print(f_matrix)
+        # print(s_matrix)
+        
+        for i in range(s_matrix.shape[0]):
+            srow = s_matrix[i][0]
+            srrow = s_matrix[i][1]
+            multi = 0
+            found = False
+            for j in range(f_matrix.shape[0]):
+                if srow == f_matrix[j][0]:
+                    found = True
+                    break
+            if not found:
+                rec.append((srow, srrow,g,kk))
+    print(rec)
+    for i in range(len(rec)):
+        
 while True :
     
                     
@@ -201,7 +277,8 @@ while True :
     elif inpot==4:
         print('\n')
         ta =str(input("first :"))
-        recomandation(ta)
+        finenibor(ta)
+        recomendatin(ta)
         
 
     

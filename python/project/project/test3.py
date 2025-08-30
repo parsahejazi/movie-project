@@ -202,6 +202,7 @@ def recomendatin(target):
     readR = Rating_file.readlines()
     rec=[]
     y=finenibor(target)
+    result=[]
     for i in range(7):
         g=0
 
@@ -244,18 +245,36 @@ def recomendatin(target):
                     break
             if not found:
                 rec.append((srow, srrow,g,kk))
+                #print("hgelllldslfj")
     print(rec)
     for i in range(len(rec)):
+        s2=0
+        p=0
+        h=0
+        hu=0
+        res=0
         for j in range(len(rec)):     
-            rec[i][0]==rec[j][0]:
+            if rec[i][0]==rec[j][0]:
                 h=rec[i][1]*rec[i][3]  
                 hu=rec[j][1]*rec[j][3]
                 s=rec[i][3]+rec[j][3]
                 p+=h+hu
                 s2+=s
-            if j ==len(rec):
+        
+            if s2>0:
                 res=p/s2
-                        
+            else:
+                print("broooo ERORRRR")
+            result.append((str(res),i))
+    fres=[]
+    helper=[]
+    for item in result:
+        ress,ii=item
+        if ress not in helper:
+            fres.append((str(ress),ii))
+            helper.append(ress)
+        
+    print("rizzzzzzz",fres)            
 while True :
     
                     

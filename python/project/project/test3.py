@@ -246,7 +246,16 @@ def recomendatin(target):
                 rec.append((srow, srrow,g,kk))
     print(rec)
     for i in range(len(rec)):
-        
+        for j in range(len(rec)):     
+            rec[i][0]==rec[j][0]:
+                h=rec[i][1]*rec[i][3]  
+                hu=rec[j][1]*rec[j][3]
+                s=rec[i][3]+rec[j][3]
+                p+=h+hu
+                s2+=s
+            if j ==len(rec):
+                res=p/s2
+                        
 while True :
     
                     

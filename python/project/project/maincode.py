@@ -260,10 +260,18 @@ def recomendatin(target):
                     found = True
                     break
             if not found:
-                rec.append((srow, srrow,g,kk))
+                already_in_rec = False
+                for r in rec:
+                    if r[0] == srow:
+                        already_in_rec = True
+                        break
+                if not already_in_rec:
+                    rec.append((srow, srrow, g, kk))
+            # rec.append((srow, srrow,g,kk))
                 #print("hgelllldslfj")
     # print(rec)
-    for i in range(len(rec)):
+    # print("lllllllllllllll",rec)
+    for i in range(1,len(rec)):
         s2=0
         p=0
         h=0
@@ -278,9 +286,10 @@ def recomendatin(target):
                 s2+=s
         
             if s2>0:
-                res=p/s2
-            
-            result.append((str(res),i))
+                res=p/math.sqrt(s2)
+                if res>0:
+                    result.append((str(res),str(rec[i][0])))
+    
     fres=[]
     helper=[]
     for item in result:
@@ -290,13 +299,13 @@ def recomendatin(target):
             helper.append(ress)
         
     fres.sort(key=lambda x: x[0], reverse=True) 
-    # print("rizzzzzzz",fres)   
+       
     movie_file = open('movies.txt')
     readM = movie_file.readlines()
     
     print("**********Recomandations********************************************************************")  
     for i in range(3):
-        # print("recomendation : " ,rec[i][0])
+        print("recomendation : " ,fres[i][1])
         for item in readM:
             partt= item.strip().split('\t')
             # print(part[0])

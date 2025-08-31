@@ -471,6 +471,28 @@ while True :
 #     # if len(Mfile)==59:
 #     #     for item in Mfile:
 #     # print(Mfile,'\n')
+
+# def removeamovie(id):
+#     M_file = open('Movies.txt')
+#     readR = M_file.readlines()
+#     Mmfile = open('Movies.txt','w')
+#     # readR = M_file.readlines()
+#     if id>2025:
+#         print("Did you time travle ?")
+#         return
+    
+    
+        
+    
+#     # add=str(Moviename)+'\t'+str( year)
+#     for line in readR:
+#         parts =line.strip().split('\t')
+#         if parts[0] != str( id):
+#             Mmfile.write(line)
+            
+#     Mmfile.close()
+#     print("Removed")
+   
         
     
 

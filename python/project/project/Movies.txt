@@ -52,7 +52,7 @@
 52	The Madness of King George	1994	01-Jan-1994	http://us.imdb.com/M/title-exact?Madness%20of%20King%20George,%20The%20(1994)	Drama	
 53	Natural Born Killers	1994	01-Jan-1994	http://us.imdb.com/M/title-exact?Natural%20Born%20Killers%20(1994)	Action|Thriller	
 54	Outbreak	1995	01-Jan-1995	http://us.imdb.com/M/title-exact?Outbreak%20(1995)	Action|Drama|Thriller	
-55	Léon: The Professional	1994	01-Jan-1994	http://us.imdb.com/Title?L%E9on+(1994)	Crime|Drama|Romance|Thriller	
+55	LÃ©on: The Professional	1994	01-Jan-1994	http://us.imdb.com/Title?L%E9on+(1994)	Crime|Drama|Romance|Thriller	
 56	Pulp Fiction	1994	01-Jan-1994	http://us.imdb.com/M/title-exact?Pulp%20Fiction%20(1994)	Crime|Drama	
 57	Priest	1994	01-Jan-1994	http://us.imdb.com/M/title-exact?Priest%20(1994)	Drama	
 58	Quiz Show	1994	01-Jan-1994	http://us.imdb.com/M/title-exact?Quiz%20Show%20(1994)	Drama	

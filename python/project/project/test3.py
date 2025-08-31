@@ -4,7 +4,7 @@ import math
 os.system('cls')
 print("**************************************Welcom to Movie recommendation system (made by p.hsah)***************************************")
 print('\n')
-print('\n')
+# print('\n')
 print("0 : Back to Menu")
 print('\n')
 print("1 : Movie list")
@@ -18,6 +18,8 @@ print('\n')
 print("5 : Rate a Movie")
 print('\n')
 print("6 : Add a Movie")
+print('\n')
+print("7 : Remove a Movie")
 print('\n')
 
 def movielist ():
@@ -260,7 +262,7 @@ def recomendatin(target):
             if not found:
                 rec.append((srow, srrow,g,kk))
                 #print("hgelllldslfj")
-    print(rec)
+    # print(rec)
     for i in range(len(rec)):
         s2=0
         p=0
@@ -308,33 +310,81 @@ def addmovie(movieid,Moviename,year):
     if year>2025:
         print("Did you time travle ?")
         return
+    if int(movieid)<60:
+        print("Error")
+        return
+    print("added")
     
         
     
-    add=str(Moviename)+'\t'+str(year)
-    for add in readR:
-        print("ERROR it has been used")
-        return;
+    add=str(Moviename)+'\t'+str( year)
+    Mm_file = open('Movies.txt','a')
+    for line in readR:
+        parts =line.strip().split('\t')
+        if parts[1] == str( Moviename):
+            print("ERROR movie name not valid")
+            return;
     else:
-        rating.write(add)
+        Mm_file.write('\n'+str(movieid)+'\t'+str(Moviename)+'\t'+str( year)+'\n')
         
- def addacoment(id,mid,rate):
-    Rating_file = open('Ratings.txt')
+def addacoment(id,mid,rate):
+    Rating_file = open('Ratings.txt','r')
     readR = Rating_file.readlines()
+    M_file = open('Ratings.txt')
+    readM = Rating_file.readlines()
+    
+    M_file = open('Movies.txt', 'r')
+    readM = M_file.readlines()
+    max_mid = 0
+    for line in readM:
+        parts = line.strip().split('\t')
+        if int(parts[0]) > max_mid:
+            max_mid = int(parts[0])
+
+    if mid > max_mid:
+        print("ERROR movie id too big")
+        return
     if rate>5:
         print("ERROR betwwen 1 to 5")
-        return
-    if id<1 or id>100:
+        return;
+    if id<50 or id>1000:
         print("ERROR ")
         return
+    print("added")
+    
         
     
     add=str(id)+'\t'+str(mid)+'\t'+str(rate)
-    for add in readR:
-        print("ERROR it has been used")
-        return;
+    Rr_file = open('Ratings.txt','a')
+    for line in readR:
+        parts =line.strip().split('\t')
+        if parts[0] == str(id) and parts[1]==str(mid):
+            print("ERROR rate has been used")
+            return;
     else:
-        rating.write(add)       
+        Rr_file.write('\n'+str(id) +'\t'+ str(mid) +'\t'+str(rate)+'\n')
+        
+def removeamovie(id):
+    M_file = open('Movies.txt')
+    readR = M_file.readlines()
+    Mmfile = open('Movies.txt','w')
+    # readR = M_file.readlines()
+    if id>2025:
+        print("Did you time travle ?")
+        return
+    
+    
+        
+    
+    # add=str(Moviename)+'\t'+str( year)
+    for line in readR:
+        parts =line.strip().split('\t')
+        if parts[0] != str( id):
+            Mmfile.write(line)
+            
+    Mmfile.close()
+    print("Removed")
+   
 
 
 while True :
@@ -388,6 +438,28 @@ while True :
         ta =str(input("first :"))
         finenibor(ta)
         recomendatin(ta)
+    elif inpot==5:
+        print('\n')
+        os.system('cls')
+        id=int(input("ID :"))
+        mid=int(input("Movie : "))
+        rate =int(input("rate 1 to 5 : "))
+        addacoment(id,mid,rate)
+    elif inpot==6:
+        print('\n')
+        os.system('cls')
+        idd=int(input("id :"))
+        midd=str(input("name : "))
+        rated =int(input("yaer: "))
+        addmovie(idd,midd,rated)
+    elif inpot==7:
+        print('\n')
+        os.system('cls')
+        iddd=int(input("id :"))
+        removeamovie(iddd)
+    else:
+        print("Error")
+        
         
 
     

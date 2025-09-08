@@ -4,8 +4,6 @@ import math
 os.system('cls')
 print("**************************************Welcom to Movie recommendation system (made by p.hsah)***************************************")
 print('\n')
-# print('\n')
-print("0 : Back to Menu")
 print('\n')
 print("1 : Movie list")
 print('\n')
@@ -17,10 +15,13 @@ print("4 : Movie recommendation")
 print('\n')
 print("5 : Rate a Movie")
 print('\n')
-print("6 : Add a Movie")
+print("6 : Add a Movie/Remove a Movie")
 print('\n')
-print("7 : Remove a Movie")
+print("6 : exit")
 print('\n')
+
+id =60
+
 
 def movielist ():
     
@@ -38,21 +39,27 @@ def movielist ():
                 else:
                     print(char, end='')
 
-def comments ():
+def comments (id):
     Rating_file = open('Ratings.txt')
     readR = Rating_file.readlines()
-    # print(readR)
+    # parts==[]
     for line in readR:
-        for item in line:
-            for char in item :
-                if char=='\t':
-                    print('\t',end ='') 
-                elif char=='\n':
+        parts =line.strip().split('\t')
+        if parts[0] == str( id):
+            print(parts[0],'\t',parts[1],'\t',parts[2],'\n')
+    return;
+    # print(readR)
+    # for line in readR:
+    #     for item in line:
+    #         for char in item :
+    #             if char=='\t':
+    #                 print('\t',end ='') 
+    #             elif char=='\n':
 
-                    print('\n', end='')
-                    print('\n', end='')
-                else:
-                    print(char, end='')
+    #                 print('\n', end='')
+    #                 print('\n', end='')
+    #             else:
+    #                 print(char, end='')
                                      
 def sim(target1,target2):
     Rating_file = open('Ratings.txt')
@@ -286,7 +293,7 @@ def recomendatin(target):
                 s2+=s
         
             if s2>0:
-                res=p/math.sqrt(s2)
+                res=p/s2
                 if res>0:
                     result.append((str(res),str(rec[i][0])))
     
@@ -304,14 +311,15 @@ def recomendatin(target):
     readM = movie_file.readlines()
     
     print("**********Recomandations********************************************************************")  
+    print("movie",'\t',"year",'\t',"rating")
     for i in range(3):
-        print("recomendation : " ,fres[i][1])
+        # print("recomendation : " ,fres[i][1])
         for item in readM:
             partt= item.strip().split('\t')
             # print(part[0])
             if partt[0]==str(fres[i][1]):
                 
-                print(" Film : ",partt[1],'\t',partt[2],'\n')
+                print(partt[1],'\t',partt[2],'\t',fres[i][0],'\n')
  
 def addmovie(movieid,Moviename,year):
     M_file = open('Movies.txt')
@@ -319,9 +327,9 @@ def addmovie(movieid,Moviename,year):
     if year>2025:
         print("Did you time travle ?")
         return
-    if int(movieid)<60:
-        print("Error")
-        return
+    # if int(movieid)<60:
+    #     print("Error")
+    #     return
     print("added")
     
         
@@ -334,7 +342,14 @@ def addmovie(movieid,Moviename,year):
             print("ERROR movie name not valid")
             return;
     else:
-        Mm_file.write('\n'+str(movieid)+'\t'+str(Moviename)+'\t'+str( year)+'\n')
+        x=str(input("are u sure (y/n) :"))
+        if x=="y":
+            Mm_file.write('\n'+str(movieid)+'\t'+str(Moviename)+'\t'+str( year))
+        elif x=="n":
+            return;
+        else:
+            print("Error")
+            x=str(input("are u sure (y/n) :"))
         
 def addacoment(id,mid,rate):
     Rating_file = open('Ratings.txt','r')
@@ -371,7 +386,7 @@ def addacoment(id,mid,rate):
             print("ERROR rate has been used")
             return;
     else:
-        Rr_file.write('\n'+str(id) +'\t'+ str(mid) +'\t'+str(rate)+'\n')
+        Rr_file.write('\n'+str(id) +'\t'+ str(mid) +'\t'+str(rate))
         
 def removeamovie(id):
     M_file = open('Movies.txt')
@@ -397,7 +412,6 @@ def removeamovie(id):
 
 
 while True :
-    
                     
     inpot =int(input("Enter your choice :"))
 
@@ -405,19 +419,20 @@ while True :
         os.system('cls')
         movielist()
         print('\n')
+        print("press ""0"" to return to menu ")
         # inpot =int(input("press what you want to do :"))
     elif inpot==2:
         os.system('cls')
-        comments()
+        iii=int(input("id:"))
+        comments(iii)
         print('\n')
+        print("press ""0"" to return to menu ")
         # inpot =int(input("press what you want to do :"))
     elif inpot==0:
         print('\n')
         os.system('cls')
         print("**************************************Welcom to Movie recommendation system (made by p.hsah)***************************************")
         print('\n')
-        print('\n')
-        print("0 : Back to Menu")
         print('\n')
         print("1 : Movie list")
         print('\n')
@@ -441,12 +456,16 @@ while True :
         res = sim(target1,target2)
         print("sim : ")
         print(res)
+        print('\n')
+        print("press ""0"" to return to menu ")
     elif inpot==4:
         print('\n')
         os.system('cls')
-        ta =str(input("first :"))
+        ta =str(input("ID :"))
         finenibor(ta)
         recomendatin(ta)
+        print('\n')
+        print("press ""0"" to return to menu ")
     elif inpot==5:
         print('\n')
         os.system('cls')
@@ -454,20 +473,61 @@ while True :
         mid=int(input("Movie : "))
         rate =int(input("rate 1 to 5 : "))
         addacoment(id,mid,rate)
+        print('\n')
+        print("press ""0"" to return to menu ")
     elif inpot==6:
         print('\n')
         os.system('cls')
-        idd=int(input("id :"))
-        midd=str(input("name : "))
-        rated =int(input("yaer: "))
-        addmovie(idd,midd,rated)
-    elif inpot==7:
+        ii=int(input("Remove 1 , Add 2 : "))
+        if ii==2:
+            id+=1
+        
+        # idd=int(input("id :"))
+            midd=str(input("name : "))
+            rated =int(input("yaer: "))
+            idd=id
+            addmovie(idd,midd,rated)
+        elif ii==1:
+        
+            print('\n')
+            os.system('cls')
+            iddd=int(input("id :"))
+            removeamovie(iddd)
+        else :
+            print("ERROR")
+        print('\n')
+        print("press ""0"" to return to menu ")
+            
+    elif inpot==0:
         print('\n')
         os.system('cls')
-        iddd=int(input("id :"))
-        removeamovie(iddd)
+        print("**************************************Welcom to Movie recommendation system (made by p.hsah)***************************************")
+        print('\n')
+        print('\n')
+        print("1 : Movie list")
+        print('\n')
+        print("2 : Ratings list")
+        print('\n')
+        print("3 : Similarity between tow users")
+        print('\n')
+        print("4 : Movie recommendation")
+        print('\n')
+        print("5 : Rate a Movie")
+        print('\n')
+        print("6 : Add a Movie")
+        print('\n')
+        print("6 : exit")
+        print('\n')
+    elif inpot==7:
+        exit()
     else:
-        print("Error")
+        print("error")
+    
+    
+        
+        
+    
+    
         
         
 

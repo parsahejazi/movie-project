@@ -47,7 +47,6 @@
 47	Ed Wood	1994	01-Jan-1994	http://us.imdb.com/M/title-exact?Ed%20Wood%20(1994)	Comedy|Drama	
 48	Hoop Dreams	1994	01-Jan-1994	http://us.imdb.com/M/title-exact?Hoop%20Dreams%20(1994)	Documentary	
 49	I.Q.	1994	01-Jan-1994	http://us.imdb.com/M/title-exact?I.Q.%20(1994)	Comedy|Romance	
-50	Star Wars	1977	01-Jan-1977	http://us.imdb.com/M/title-exact?Star%20Wars%20(1977)	Action|Adventure|Romance|Sci-Fi|War	
 51	Legends of the Fall	1994	01-Jan-1994	http://us.imdb.com/M/title-exact?Legends%20of%20the%20Fall%20(1994)	Drama|Romance|War|Western	
 52	The Madness of King George	1994	01-Jan-1994	http://us.imdb.com/M/title-exact?Madness%20of%20King%20George,%20The%20(1994)	Drama	
 53	Natural Born Killers	1994	01-Jan-1994	http://us.imdb.com/M/title-exact?Natural%20Born%20Killers%20(1994)	Action|Thriller	

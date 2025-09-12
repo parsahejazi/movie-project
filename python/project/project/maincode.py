@@ -27,26 +27,33 @@ def movielist ():
     
     movie_file = open('Movies.txt')
     readM = movie_file.readlines()
+    print("movie names display",'\n')
     for line in readM:
-        for item in line:
-            for char in item :
-                if char=='\t':
-                    print('\t',end ='') 
-                elif char=='\n':
+        parts =line.strip().split('\t')
+        print(parts[0],'\t',parts[1],'\t',parts[2],'\n')
+    # for line in readM:
+    #     for item in line:
+    #         for char in item :
+    #             if char=='\t':
+    #                 print('\t',end ='') 
+    #             elif char=='\n':
 
-                    print('\n', end='')
-                    print('\n', end='')
-                else:
-                    print(char, end='')
+    #                 print('\n', end='')
+    #                 print('\n', end='')
+    #             else:
+    #                 print(char, end='')
 
 def comments (id):
     Rating_file = open('Ratings.txt')
     readR = Rating_file.readlines()
+    
     # parts==[]
+    print("comments dispaly")
     for line in readR:
         parts =line.strip().split('\t')
         if parts[0] == str( id):
             print(parts[0],'\t',parts[1],'\t',parts[2],'\n')
+        
     return;
     # print(readR)
     # for line in readR:
@@ -311,7 +318,7 @@ def recomendatin(target):
     readM = movie_file.readlines()
     
     print("**********Recomandations********************************************************************")  
-    print("movie",'\t',"year",'\t',"rating")
+    print("movie",'\t',"year",'\t',"rating",'\n')
     for i in range(3):
         # print("recomendation : " ,fres[i][1])
         for item in readM:
@@ -320,6 +327,52 @@ def recomendatin(target):
             if partt[0]==str(fres[i][1]):
                 
                 print(partt[1],'\t',partt[2],'\t',fres[i][0],'\n')
+    print('\n')
+    print("press 1 to show all the predicted ratings",'\n')
+    print("press 0 to to returrn to menu",'\n')
+    print("press 7 to to exit",'\n')
+    
+    xx=int(input("Enter your choice : "))
+    
+    if xx==0:
+        print('\n')
+        os.system('cls')
+        print("**************************************Welcom to Movie recommendation system (made by p.hsah)***************************************")
+        print('\n')
+        print('\n')
+        print("1 : Movie list")
+        print('\n')
+        print("2 : Ratings list")
+        print('\n')
+        print("3 : Similarity between tow users")
+        print('\n')
+        print("4 : Movie recommendation")
+        print('\n')
+        print("5 : Rate a Movie")
+        print('\n')
+        print("6 : Add a Movie")
+        print('\n')
+        print("6 : exit")
+        print('\n')
+    elif xx==7:
+        exit()
+    elif xx==1:
+        print("**********Recomandations********************************************************************")  
+        print("movie",'\t',"year",'\t',"rating",'\n')
+        for i in range(len(fres)):
+            # print("recomendation : " ,fres[i][1])
+            for item in readM:
+                partt= item.strip().split('\t')
+                # print(part[0])
+                if partt[0]==str(fres[i][1]):
+                    
+                    print(partt[1],'\t',partt[2],'\t',fres[i][0],'\n')
+    else:
+        print("ERROR")
+        xx=int(input("Enter your choice : "))
+        
+        
+         
  
 def addmovie(movieid,Moviename,year):
     M_file = open('Movies.txt')
@@ -409,6 +462,32 @@ def removeamovie(id):
     Mmfile.close()
     print("Removed")
    
+def helper(p,intt):
+    if intt==1:
+        print(p)
+    elif intt==0:
+        print('\n')
+        os.system('cls')
+        print("**************************************Welcom to Movie recommendation system (made by p.hsah)***************************************")
+        print('\n')
+        print('\n')
+        print("1 : Movie list")
+        print('\n')
+        print("2 : Ratings list")
+        print('\n')
+        print("3 : Similarity between tow users")
+        print('\n')
+        print("4 : Movie recommendation")
+        print('\n')
+        print("5 : Rate a Movie")
+        print('\n')
+        print("6 : Add a Movie")
+        print('\n')
+        print("6 : exit")
+        print('\n')
+    else:
+        print("error")
+    return
 
 
 while True :
